@@ -43,7 +43,22 @@ bun run check
 bun run preview
 ```
 
-A pasta `dist/` contém o site estático para uma publicação futura. Este projeto não configura hospedagem automaticamente. Mantenha `bun.lock` versionado e use `bun install --frozen-lockfile` em CI.
+A pasta `dist/` contém o site estático. Mantenha `bun.lock` versionado e use `bun install --frozen-lockfile` em CI.
+
+## GitHub Pages
+
+Repositório: [JohnnyBoySou/johnnyboysou.github.io](https://github.com/JohnnyBoySou/johnnyboysou.github.io).
+Endereço de publicação: https://johnnyboysou.github.io/.
+
+O workflow `.github/workflows/pages.yml` executa lint, TypeScript, build e testes de navegador antes de publicar `dist/`. Ele roda a cada push em `main` e também pode ser iniciado manualmente em Actions. O Vite usa a base padrão `/`, pois este é o site principal do usuário.
+
+Antes do primeiro deployment, habilite **Settings → Pages → Source → GitHub Actions**. O plano da conta precisa permitir Pages para a visibilidade do repositório; no plano atual, é necessário um repositório público.
+
+Para validar o site após um deployment, sem iniciar um servidor local:
+
+```bash
+E2E_BASE_URL=https://johnnyboysou.github.io bunx playwright test
+```
 
 ## Direção visual e animação
 

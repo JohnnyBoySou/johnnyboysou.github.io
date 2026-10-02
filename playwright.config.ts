@@ -1,12 +1,14 @@
 import { defineConfig } from '@playwright/test'
 
+const externalBaseURL = process.env.E2E_BASE_URL
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   workers: 2,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4175',
+    baseURL: externalBaseURL || 'http://127.0.0.1:4175',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
@@ -30,7 +32,7 @@ export default defineConfig({
       },
     },
   ],
-  webServer: {
+  webServer: externalBaseURL ? undefined : {
     command: 'bun run preview --host 127.0.0.1 --port 4175 --strictPort',
     url: 'http://127.0.0.1:4175',
     reuseExistingServer: false,
