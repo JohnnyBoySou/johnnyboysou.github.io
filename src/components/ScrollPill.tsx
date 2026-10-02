@@ -33,12 +33,12 @@ export function ScrollPill() {
         const title = target.querySelector('h2, h3')?.textContent?.trim()
         if (title) found.push({ label: labels[target.id] || title, target })
       })
-      setSections(previous => previous.length === found.length && previous.every((item, i) => item.target === found[i].target)
+      setSections(previous => previous.length === found.length && previous.every((item, i) => item.target === found[i].target && item.label === found[i].label)
         ? previous : found)
     }
     collect()
     const observer = new MutationObserver(collect)
-    observer.observe(main, { childList: true, subtree: true })
+    observer.observe(main, { childList: true, characterData: true, subtree: true })
     return () => observer.disconnect()
   }, [])
 
@@ -87,7 +87,7 @@ export function ScrollPill() {
           else button.removeAttribute('aria-current')
         })
         element.setAttribute('aria-valuenow', String(Math.round(fraction * 100)))
-        element.setAttribute('aria-valuetext', `${Math.round(fraction * 100)}% da página`)
+        element.setAttribute('aria-valuetext', tx('{{percent}}% da página', { percent: Math.round(fraction * 100) }))
       }
       const schedule = () => {
         cancelAnimationFrame(frame)
@@ -104,6 +104,7 @@ export function ScrollPill() {
       window.addEventListener('scroll', schedule, { passive: true })
       window.addEventListener('resize', schedule)
       document.addEventListener('portfolio:ready', schedule)
+      document.addEventListener('portfolio:language', schedule)
       ScrollTrigger.addEventListener('refresh', schedule)
       update()
       return () => {
@@ -117,6 +118,7 @@ export function ScrollPill() {
         window.removeEventListener('scroll', schedule)
         window.removeEventListener('resize', schedule)
         document.removeEventListener('portfolio:ready', schedule)
+        document.removeEventListener('portfolio:language', schedule)
         ScrollTrigger.removeEventListener('refresh', schedule)
       }
     })

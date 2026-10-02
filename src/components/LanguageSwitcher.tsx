@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { languages, tx } from '../i18n'
 import './LanguageSwitcher.css'
 
-const flags = { 'pt-BR': '🇧🇷', es: '🇪🇸', en: '🇺🇸' }
+const flags = { 'pt-BR': '🇧🇷', es: '🇪🇸', en: '🇺🇸', de: '🇩🇪' }
 export function LanguageSwitcher() {
   const { i18n } = useTranslation()
   const [open, setOpen] = useState(false)

@@ -135,7 +135,7 @@ export function ProductCard({ product }: { product: Product }) {
             <li key={feature}>{tx(feature)}</li>
           ))}
         </ul>
-        <a className="product-link" href={product.url}>{tx("Conhecer")}{tx(product.title)}
+        <a className="product-link" href={product.url}>{tx('Conhecer {{value0}}', { value0: product.title })}
           <ArrowIcon diagonal />
         </a>
       </div>

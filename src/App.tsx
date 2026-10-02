@@ -117,7 +117,7 @@ function App() {
               ))}
             </div>
             <p className="sr-only" role="status">
-              {tx(filteredProjects.length)} {tx("projetos exibidos. Filtro:")}{tx(' ')}
+              {tx(filteredProjects.length)} {tx("projetos exibidos. Filtro:")}{' '}
               {tx(projectFilter)}.
             </p>
             <div id="project-results">
@@ -202,7 +202,7 @@ function App() {
                 <div className="contact-actions">
                   <a
                     className="contact-link"
-                    href={`${profileLinks.whatsapp}?text=${encodeURIComponent(portfolio.whatsapp.message)}`}
+                    href={`${profileLinks.whatsapp}?text=${encodeURIComponent(tx(portfolio.whatsapp.message))}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={tx("Conversar no WhatsApp (abre em nova aba)")}

@@ -155,7 +155,7 @@ function ModelCard({ model }: { model: TrainedModel }) {
         </dl>
         <p className="model-context">{tx(model.context)}</p>
         <div className="page-actions">
-          <a href={model.url}>{tx("Sobre")}{tx(model.name)}
+          <a href={model.url}>{tx('Sobre {{name}}', { name: model.name })}
             <ArrowIcon diagonal />
           </a>
           {model.reportUrl && (
@@ -251,9 +251,9 @@ function ProjectPage({ id }: { id: string }) {
             <span className="project-status-label">{tx("Código público")}</span>
           )}
           <a href={project.url}>
-            {tx(product
-              ? `Visitar ${project.title}`
-              : `Código de ${project.title} no GitHub`)}
+            {product
+              ? tx('Visitar {{name}}', { name: project.title })
+              : tx('Código de {{value0}} no GitHub', { value0: project.title })}
             <ArrowIcon diagonal />
           </a>
         </div>
@@ -280,10 +280,10 @@ function ProjectPage({ id }: { id: string }) {
       )}
       <section className="project-overview" aria-labelledby="overview-title">
         <h2 id="overview-title">
-          {story?.title ?? 'O que este projeto resolve.'}
+          {tx(story?.title ?? 'O que este projeto resolve.')}
         </h2>
         <div>
-          <p>{story?.description ?? project.description}</p>
+          <p>{tx(story?.description ?? project.description)}</p>
           <p>{tx(project.detail)}</p>
           <ul className="project-features">
             {(product?.features ?? repository?.technologies ?? []).map(

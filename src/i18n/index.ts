@@ -1,12 +1,16 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import en from './en.json'
-import es from './es.json'
+const catalogs = {
+  en: () => import('./en.json'),
+  es: () => import('./es.json'),
+  de: () => import('./de.json'),
+}
 
 export const languages = [
   { code: 'pt-BR', label: 'Português brasileiro', short: 'PT' },
   { code: 'es', label: 'Español', short: 'ES' },
   { code: 'en', label: 'English', short: 'EN' },
+  { code: 'de', label: 'Deutsch', short: 'DE' },
 ] as const
 export type Language = (typeof languages)[number]['code']
 
@@ -18,12 +22,20 @@ function initialLanguage(): Language {
   return 'pt-BR'
 }
 
-void i18n.use(initReactI18next).init({
+export const languageReady = i18n.use({
+  type: 'backend' as const,
+  read(language: string, _namespace: string, callback: (error: Error | null, data: Record<string, string> | null) => void) {
+    const load = catalogs[language as keyof typeof catalogs]
+    if (!load) return callback(null, {})
+    void load().then(module => callback(null, module.default), error => callback(error, null))
+  },
+}).use(initReactI18next).init({
   lng: initialLanguage(),
   supportedLngs: languages.map(language => language.code),
   fallbackLng: 'pt-BR',
   load: 'currentOnly',
-  resources: { 'pt-BR': { translation: {} }, en: { translation: en }, es: { translation: es } },
+  resources: { 'pt-BR': { translation: {} } },
+  partialBundledLanguages: true,
   keySeparator: false,
   nsSeparator: false,
   interpolation: { escapeValue: false },

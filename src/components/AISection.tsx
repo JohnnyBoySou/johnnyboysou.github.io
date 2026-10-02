@@ -135,7 +135,7 @@ export function AISection() {
             </div>
           </div>
           <div className="ai-model-links">
-            <a href={`/modelos#${model.id}`}>{tx("Explorar")}{tx(model.name)} <ArrowIcon diagonal />
+            <a href={`/modelos#${model.id}`}>{tx('Explorar {{name}}', { name: model.name })} <ArrowIcon diagonal />
             </a>
             <a href={`/projetos/${model.projectId}`}>
               {tx(model.product)} {tx("no portfólio")} <ArrowIcon diagonal />
@@ -158,7 +158,7 @@ export function AISection() {
             <h4>{tx(practice.title)}</h4>
             <p>{tx(practice.description)}</p>
             <ul
-              aria-label={tx("Tecnologias e práticas de {{value0}}", {value0: tx(practice.title.toLowerCase())})}
+              aria-label={tx("Tecnologias e práticas de {{value0}}", {value0: tx(practice.title).toLowerCase()})}
             >
               {practice.tools.map((tool) => (
                 <li key={tool}>{tx(tool)}</li>

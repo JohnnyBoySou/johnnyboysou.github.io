@@ -241,7 +241,7 @@ export function ProcessSection() {
             <a
               className="decision-project"
               href={`/projetos/${decision.projectId}`}
-            >{tx("Explorar")}{tx(decision.project)} <ArrowIcon diagonal />
+            >{tx('Explorar {{name}}', { name: decision.project })} <ArrowIcon diagonal />
             </a>
           </div>
         </div>

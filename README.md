@@ -23,6 +23,14 @@ Abra a URL exibida no terminal (http://localhost:5174, porta fixa com `strictPor
 - `bun run preview`: serve localmente o build gerado.
 - `bun run test:e2e`: gera o build e testa a interface em Chromium (desktop, mobile e movimento reduzido).
 
+## Idiomas
+
+O seletor de bandeiras ao lado do tema oferece português brasileiro (padrão), espanhol, inglês e alemão. A escolha fica salva no navegador em `portfolio-language`, sem alterar os endereços das páginas.
+
+A integração usa `react-i18next` em `src/i18n`. As frases em português são as chaves; `en.json`, `es.json` e `de.json` contêm as traduções. Ao editar um texto traduzível, atualize os três catálogos e preserve as variáveis `{{nome}}`. IDs, URLs e nomes dos produtos permanecem estáveis.
+
+`tests/i18n.spec.ts` verifica os catálogos, a troca de idioma, persistência, navegação por teclado e layout em desktop e mobile.
+
 ## Personalização
 
 - `src/data/portfolio.ts`: perfil profissional, contatos e repositórios públicos.

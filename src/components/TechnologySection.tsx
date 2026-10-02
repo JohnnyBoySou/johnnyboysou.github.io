@@ -250,7 +250,7 @@ export function TechnologySection() {
               : area)}
           </span>
           <span aria-hidden="true">
-            {tx(items.length)}{tx("tecnologias")}</span>
+            {tx(items.length)}{' '}{tx("tecnologias")}</span>
         </div>
         </div>
       </div>

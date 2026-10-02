@@ -5,6 +5,7 @@ import './ChalkPortrait.css'
 export function ChalkPortrait() {
   const portrait = useRef<SVGSVGElement>(null)
   const [visible, setVisible] = useState(false)
+  const [loadImage, setLoadImage] = useState(false)
   const id = useId()
 
   useEffect(() => {
@@ -20,7 +21,14 @@ export function ChalkPortrait() {
       { threshold: 0.25 },
     )
     observer.observe(element)
-    return () => observer.disconnect()
+    const preload = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setLoadImage(true)
+        preload.disconnect()
+      }
+    }, { rootMargin: '500px' })
+    preload.observe(element)
+    return () => { observer.disconnect(); preload.disconnect() }
   }, [])
 
   return (
@@ -49,13 +57,13 @@ export function ChalkPortrait() {
       <g mask={`url(#${id}-reveal)`}>
         <image
           className="chalk-portrait-image chalk-portrait-image--light"
-          href="/images/joao-sousa-chalk.png"
+          href={loadImage ? '/images/joao-sousa-chalk.webp' : undefined}
           width="400"
           height="400"
         />
         <image
           className="chalk-portrait-image chalk-portrait-image--dark"
-          href="/images/joao-sousa-chalk-dark.png"
+          href={loadImage ? '/images/joao-sousa-chalk-dark.webp' : undefined}
           width="400"
           height="400"
         />

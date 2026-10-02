@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { tx } from '../i18n'
 
 /** Dismisses the static HTML loader after React and the page fonts are ready. */
 export function SiteReady() {
@@ -7,6 +8,7 @@ export function SiteReady() {
     const loader = document.getElementById('boot-loader')
     const root = document.getElementById('root')
     if (!loader) return
+    loader.setAttribute('aria-label', tx('Carregando portfólio'))
     let disposed = false
     let leaving = false
     let completionTimer = 0
