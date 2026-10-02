@@ -1,3 +1,4 @@
+import { tx } from "../i18n"
 import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -12,21 +13,20 @@ function ProjectArtwork({ kind }: { kind: Project['kind'] }) {
   if (kind === 'indexer') {
     return (
       <div className="index-art">
-        <span className="index-root">repo/</span>
+        <span className="index-root">{tx("repo/")}</span>
         <span className="index-connector" />
         <div className="index-files">
-          <span>app.ts</span>
-          <span>api.ts</span>
-          <span>ui.tsx</span>
+          <span>{tx("app.ts")}</span>
+          <span>{tx("api.ts")}</span>
+          <span>{tx("ui.tsx")}</span>
         </div>
         <span className="index-connector" />
-        <span className="index-engine">
-          wkix<span>Zig + tree-sitter</span>
+        <span className="index-engine">{tx("wkix")}<span>{tx("Zig + tree-sitter")}</span>
         </span>
         <span className="index-connector" />
         <div className="index-output">
-          <span>symbols.json</span>
-          <span>import_graph.json</span>
+          <span>{tx("symbols.json")}</span>
+          <span>{tx("import_graph.json")}</span>
         </div>
       </div>
     )
@@ -42,38 +42,36 @@ function ProjectArtwork({ kind }: { kind: Project['kind'] }) {
             <i key={index} style={{ height: `${height}%` }} />
           ))}
         </div>
-        <span className="speech-endpoint">POST /transcribe</span>
+        <span className="speech-endpoint">{tx("POST /transcribe")}</span>
         <div className="pipeline-nodes">
-          <span>HTTP</span>
-          <span>Redis</span>
-          <span>Whisper</span>
+          <span>{tx("HTTP")}</span>
+          <span>{tx("Redis")}</span>
+          <span>{tx("Whisper")}</span>
         </div>
-        <span className="speech-result">202 {'{ jobId }'}</span>
+        <span className="speech-result">202 {tx('{ jobId }')}</span>
       </div>
     )
   }
   return (
     <div className="terminal-art">
       <span className="terminal-header">
-        <span>nani</span>
-        <span>~/project</span>
+        <span>{tx("nani")}</span>
+        <span>{tx("~/project")}</span>
       </span>
       <div className="terminal-content">
-        <span className="terminal-folder">▸ src/</span>
-        <span> components/</span>
+        <span className="terminal-folder">{tx("▸ src/")}</span>
+        <span> {tx("components/")}</span>
         <span className="terminal-selected">
-          {' '}
-          main.go <span>←</span>
+          {tx(' ')}{tx("main.go")}<span>←</span>
         </span>
-        <span> go.mod</span>
-        <span> README.md</span>
+        <span> {tx("go.mod")}</span>
+        <span> {tx("README.md")}</span>
         <span className="terminal-divider" />
-        <span className="terminal-code">func main() {'{'}</span>
-        <span className="terminal-code"> run()</span>
-        <span className="terminal-code">{'}'}</span>
+        <span className="terminal-code">{tx("func main()")} {tx('{')}</span>
+        <span className="terminal-code"> {tx("run()")}</span>
+        <span className="terminal-code">{tx('}')}</span>
       </div>
-      <span className="terminal-footer">
-        ↑↓ navegar <span>↵ abrir</span>
+      <span className="terminal-footer">{tx("↑↓ navegar")}<span>{tx("↵ abrir")}</span>
       </span>
     </div>
   )
@@ -100,36 +98,36 @@ export function ProjectCard({ project }: { project: Project }) {
       <button
         className="project-visual"
         type="button"
-        aria-label={`Detalhes de ${project.title}`}
+        aria-label={tx("Detalhes de {{value0}}", {value0: tx(project.title)})}
         aria-expanded={expanded}
         aria-controls={`${project.id}-details`}
         onClick={() => setExpanded((value) => !value)}
       >
         <span className="project-category" aria-hidden="true">
-          {project.category}
+          {tx(project.category)}
         </span>
         <span className="project-art" aria-hidden="true">
           <ProjectArtwork kind={project.kind} />
         </span>
         <span className="project-visual-footer" aria-hidden="true">
-          <span>{expanded ? 'Fechar detalhes' : 'Explorar arquitetura'}</span>
-          <span className="project-toggle">{expanded ? '−' : '+'}</span>
+          <span>{tx(expanded ? 'Fechar detalhes' : 'Explorar arquitetura')}</span>
+          <span className="project-toggle">{tx(expanded ? '−' : '+')}</span>
         </span>
       </button>
       <div className="project-caption">
         <div className="project-title-row">
-          <h3>{project.title}</h3>
+          <h3>{tx(project.title)}</h3>
           <a
             href={project.url}
-            aria-label={`Código de ${project.title} no GitHub`}
+            aria-label={tx("Código de {{value0}} no GitHub", {value0: tx(project.title)})}
           >
             <ArrowIcon diagonal />
           </a>
         </div>
-        <p>{project.description}</p>
+        <p>{tx(project.description)}</p>
         <ul className="project-technologies">
           {project.technologies.map((technology) => (
-            <li key={technology}>{technology}</li>
+            <li key={technology}>{tx(technology)}</li>
           ))}
         </ul>
       </div>
@@ -138,9 +136,8 @@ export function ProjectCard({ project }: { project: Project }) {
         id={`${project.id}-details`}
         hidden={!expanded}
       >
-        <p>{project.detail}</p>
-        <a href={project.url}>
-          Ler código e documentação <ArrowIcon diagonal />
+        <p>{tx(project.detail)}</p>
+        <a href={project.url}>{tx("Ler código e documentação")}<ArrowIcon diagonal />
         </a>
       </div>
     </article>

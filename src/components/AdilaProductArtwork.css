@@ -1,0 +1,65 @@
+.product--adila-pay .product-visual { background: var(--gold); color: #4f3c1b; }
+.product--adila-webhooks .product-visual { background: var(--cyan); color: #193e49; }
+.product--adila-queues .product-visual { background: var(--lime); color: #2c4426; }
+.product--adila-orbit .product-visual { background: var(--violet); color: #3b2f50; }
+.adila-art { font-size: 12px; line-height: 1.3; }
+.pay-sheet {
+  width: 74%;
+  padding: 20px;
+  border-radius: 16px;
+  background: #fffaf0;
+  box-shadow: 10px 12px 0 #795a1720;
+  transform: rotate(-4deg);
+}
+.pay-sheet-heading { display: flex; align-items: center; justify-content: space-between; font-size: 18px; }
+.pay-mark { font-size: 24px; }
+.pay-methods { display: flex; gap: 5px; margin: 16px 0; }
+.pay-methods > span { padding: 6px 9px; border: 1px solid #795a1728; border-radius: 20px; font-size: 10px; }
+.pay-lines { display: grid; gap: 7px; margin-bottom: 16px; }
+.pay-lines i { height: 5px; border-radius: 4px; background: #795a1722; }
+.pay-lines i:last-child { width: 65%; }
+.pay-action { display: flex; align-items: center; justify-content: space-between; border-radius: 8px; padding: 10px 12px; background: #4f3c1b; color: #fffaf0; }
+.pay-action svg { width: 18px; height: 18px; }
+.pay-ledger { display: flex; align-items: center; gap: 12px; margin: -7px 0 0 35%; padding: 12px 16px; background: #eed9a7; border: 1px solid #795a1730; border-radius: 12px; transform: rotate(4deg); white-space: nowrap; }
+.pay-ledger span:last-of-type { font-size: 10px; }
+.pay-ledger i { width: 6px; height: 6px; border-radius: 50%; background: #648740; }
+.webhook-event { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 86%; padding: 22px 18px; border-radius: 12px; background: #f0fbfc; box-shadow: 0 6px 0 #193e4912; }
+.webhook-event code { font-size: 11px; color: #3b6874; }
+.webhook-route { display: flex; align-items: center; flex-direction: column; gap: 7px; font-size: 10px; }
+.webhook-route i { width: 1px; height: 22px; background: #193e4940; }
+.webhook-destinations { display: flex; justify-content: center; gap: 12px; width: 100%; }
+.webhook-destinations > span { display: flex; align-items: center; gap: 18px; padding: 15px 16px; border-radius: 10px; border: 1px solid #193e4928; background: #ffffff55; }
+.webhook-destinations svg { width: 17px; height: 17px; }
+.webhook-replay { margin-top: 16px; font-size: 10px; }
+.queue-lanes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; }
+.queue-lane { display: flex; flex-direction: column; gap: 16px; }
+.queue-lane > small { text-align: center; font-size: 11px; }
+.queue-jobs { display: grid; align-content: start; gap: 8px; min-height: 180px; padding: 10px; border: 1px solid #2c442626; border-radius: 12px; background: #ffffff20; }
+.queue-jobs > i { display: grid; gap: 6px; padding: 9px; border-radius: 6px; background: #f5f9ed; box-shadow: 0 3px 0 #2c442613; }
+.queue-jobs i span { display: block; height: 3px; background: #2c442638; border-radius: 3px; }
+.queue-jobs i span:last-child { width: 60%; }
+.queue-lane:nth-child(2) .queue-jobs > i { background: #6a8759; }
+.queue-lane:nth-child(2) .queue-jobs i span { background: #eef6e97a; }
+.queue-stream { display: flex; align-items: center; gap: 7px; margin-top: 15px; font-size: 10px; }
+.queue-stream > i { width: 6px; height: 6px; border-radius: 50%; background: #4b6b3c; }
+.orbit-roadmap { display: flex; align-items: center; width: 90%; gap: 8px; margin-bottom: 24px; font-size: 10px; }
+.orbit-roadmap i { flex: 1; height: 2px; background: #57427342; border-radius: 4px; }
+.orbit-board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 10px; padding: 16px 12px; border: 1px solid #57427326; border-radius: 14px; background: #ffffff28; transform: rotate(-3deg); }
+.orbit-board > span { min-width: 0; }
+.orbit-board small { font-size: 10px; }
+.orbit-task { display: grid; gap: 8px; margin-top: 14px; padding: 12px 10px; border-radius: 8px; font-size: 10px; background: #f6f0ff; box-shadow: 0 4px 0 #57427313; }
+.orbit-task i { height: 4px; border-radius: 3px; background: #57427330; }
+.orbit-task i:last-child { width: 60%; }
+.orbit-task--small { background: #bba6d9; }
+@media (max-width: 600px) {
+  .pay-sheet { width: 78%; padding: 16px; }
+  .pay-ledger { margin-left: 18%; gap: 8px; padding: 10px; }
+  .pay-methods > span { padding-inline: 7px; }
+  .webhook-event { width: 100%; padding-inline: 12px; gap: 10px; }
+  .webhook-destinations { gap: 8px; }
+  .webhook-destinations > span { padding: 13px 10px; gap: 10px; font-size: 11px; }
+  .queue-lanes { gap: 7px; }
+  .queue-jobs { padding: 7px; }
+  .orbit-board { gap: 6px; padding: 14px 8px; }
+  .orbit-task { padding-inline: 7px; }
+}

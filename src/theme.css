@@ -1,0 +1,160 @@
+/* Shared surfaces keep the editorial layout and product illustrations intact. */
+.skip-link,
+.pill-link,
+.circle-link {
+  background: var(--surface);
+}
+.pill-link:hover,
+.circle-link:hover {
+  background: var(--ink);
+  color: var(--page);
+}
+.about h2 span,
+.product-caption p,
+.product-features,
+.product-details p,
+.project-row p,
+.project-row li,
+.project-caption p,
+.project-details p {
+  color: var(--muted);
+}
+.stack li,
+.capability-list,
+.capability-item {
+  border-color: var(--line);
+}
+.capability-trigger:focus-visible {
+  outline-color: var(--focus);
+}
+.capability-detail li,
+.contact {
+  background: var(--soft);
+}
+.status-dot {
+  background: #648740;
+}
+[data-theme='dark'] .status-dot {
+  background: #b4d590;
+}
+.product--connect .product-visual {
+  background: var(--cyan);
+}
+.product--shamar .product-visual {
+  background: var(--gold);
+}
+.model-art--dalia { background: var(--gold); }
+.model-art--lira { background: var(--cyan); }
+[data-theme='dark'] .model-art--sonata { background: #bab2c7; }
+[data-theme='dark'] .document-sketch { background: #e4d9b9; }
+.technology {
+  background: #1a2030;
+}
+[data-theme='dark'] .technology {
+  background: #10151f;
+}
+[data-theme='dark'] .copilot-note {
+  background: #dfd5ed;
+}
+[data-theme='dark'] .audit-art {
+  background: #e5cfc4;
+}
+[data-theme='dark'] .chat-bubble:not(.chat-reply) {
+  background: #c7dce1;
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  position: relative;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: #76541d;
+  transition:
+    background 180ms,
+    box-shadow 180ms,
+    transform 180ms;
+}
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+.bulb-glass {
+  fill: #f5d78b;
+}
+.theme-toggle:hover {
+  background: #fff5d9;
+  box-shadow: 0 0 24px #deb85a35;
+}
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+.theme-toggle[aria-pressed='true'] {
+  color: #c4cce0;
+}
+.theme-toggle[aria-pressed='true'] .bulb-glass {
+  fill: transparent;
+}
+.theme-toggle[aria-pressed='true'] .bulb-rays {
+  opacity: 0;
+}
+.theme-toggle[aria-pressed='true']:hover {
+  background: #30394d;
+  box-shadow: 0 0 24px #a49fd526;
+}
+
+/* Only the light snapshot moves. The dark page stays still underneath it. */
+html[data-theme-transition]::view-transition-old(root),
+html[data-theme-transition]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html[data-theme-transition]::view-transition-group(root) {
+  animation-duration: 0s;
+}
+html[data-theme-transition='dark']::view-transition-old(root),
+html[data-theme-transition='light']::view-transition-new(root) {
+  z-index: 2;
+}
+html[data-theme-transition='dark']::view-transition-new(root),
+html[data-theme-transition='light']::view-transition-old(root) {
+  z-index: 1;
+}
+html[data-theme-transition]::view-transition {
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    position: relative;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-block: 20px;
+  }
+  .site-header nav {
+    flex-basis: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .site-header .theme-toggle {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none;
+  }
+  .theme-toggle:active {
+    transform: none;
+  }
+}

@@ -1,0 +1,10 @@
+.language-switcher { position: relative; flex-shrink: 0; }
+.language-trigger { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; background: transparent; border: 1px solid transparent; border-radius: 50%; }
+.language-trigger > span { font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif; font-size: 23px; line-height: 1; }
+.language-trigger:hover, .language-trigger[aria-expanded='true'] { background: var(--soft); }
+.language-options { position: absolute; z-index: 5; top: calc(100% + 20px); right: -55px; width: 228px; max-width: calc(100vw - 48px); padding: 8px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 12px 40px #10182820; }
+.language-options button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 10px; color: var(--ink); background: transparent; text-align: left; font-size: 13px; }
+.language-options button span { font-size: 22px; }
+.language-options button[aria-pressed='true'] { background: var(--soft); }
+.language-options button:hover { background: var(--soft); }
+@media(max-width: 400px) { .pill-controls { gap: 4px; } .language-trigger { width: 40px; } }

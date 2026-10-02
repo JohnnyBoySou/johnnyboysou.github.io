@@ -1,4 +1,11 @@
-export function ArrowIcon({ diagonal = false }: { diagonal?: boolean }) {
+export function ArrowIcon({
+  diagonal = false,
+  direction = 'right',
+}: {
+  diagonal?: boolean
+  direction?: 'right' | 'left' | 'up' | 'down'
+}) {
+  const rotation = { right: 0, left: 180, up: -90, down: 90 }[direction]
   return (
     <svg
       width="24"
@@ -9,6 +16,7 @@ export function ArrowIcon({ diagonal = false }: { diagonal?: boolean }) {
     >
       <path
         d={diagonal ? 'M6 18 18 6M6 6h12v12' : 'M5 12h14m-6-6 6 6-6 6'}
+        transform={rotation ? `rotate(${rotation} 12 12)` : undefined}
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinecap="round"

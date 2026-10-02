@@ -1,0 +1,73 @@
+.adila-catalog {
+  margin-block: 72px;
+  padding-top: 44px;
+  border-top: 1px solid var(--line);
+}
+.adila-catalog-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.adila-catalog-heading h2 {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 3.2vw, 46px);
+  line-height: 1.1;
+  font-weight: 550;
+  letter-spacing: -0.045em;
+}
+.adila-catalog-heading p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.adila-catalog-heading > a {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 12px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.adila-catalog-heading svg { width: 18px; height: 18px; }
+.adila-catalog-group + .adila-catalog-group { margin-top: 36px; }
+.adila-catalog-group > h3 { margin: 0 0 18px; font-size: 14px; font-weight: 550; }
+.adila-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.adila-catalog-grid li { min-width: 0; border-top: 1px solid var(--line); }
+.adila-catalog-grid a {
+  display: block;
+  position: relative;
+  min-height: 178px;
+  height: 100%;
+  padding: 24px 32px 24px 12px;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background-color 180ms;
+}
+.adila-catalog-category { color: var(--muted); font-size: 11px; }
+.adila-catalog-grid h4 { margin: 8px 0 10px; font-size: 22px; font-weight: 550; letter-spacing: -0.035em; }
+.adila-catalog-grid p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.adila-catalog-grid svg { position: absolute; top: 25px; right: 9px; width: 18px; height: 18px; transition: transform 200ms; }
+.adila-catalog-grid a:is(:hover, :focus-visible) { background: var(--soft); }
+.adila-catalog-grid a:is(:hover, :focus-visible) svg { transform: translate(3px, -3px); }
+@media (max-width: 900px) {
+  .adila-catalog-heading { flex-direction: column; gap: 14px; }
+  .adila-catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .adila-catalog { margin-block: 48px; padding-top: 32px; }
+  .adila-catalog-grid { grid-template-columns: 1fr; }
+  .adila-catalog-grid a { min-height: 0; padding-block: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adila-catalog-grid a:is(:hover, :focus-visible) svg { transform: none; }
+}

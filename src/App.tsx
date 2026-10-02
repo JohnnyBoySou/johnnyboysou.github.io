@@ -1,73 +1,66 @@
-import { useRef } from 'react'
+import { tx } from "./i18n"
+import { useRef, useState } from 'react'
+import { SiteHeader, SiteFooter } from './components/SiteChrome'
 import {
   portfolio,
   featuredProjects,
   moreProjects,
   profileLinks,
+  projectTags,
+  type ProjectTag,
 } from './data/portfolio'
-import { ProjectCard } from './components/ProjectCard'
+import { AISection } from './components/AISection'
+import { ProductCard } from './components/ProductCard'
+import { products } from './data/products'
+import './components/ProjectCard.css'
 import { ArrowIcon, Asterisk } from './components/Icons'
 import { usePortfolioMotion } from './hooks/usePortfolioMotion'
+import { useSectionReveal } from './hooks/useSectionReveal'
 import {
   CapabilitiesSection,
   ProcessSection,
   TechnologySection,
 } from './components/PortfolioSections'
 import './App.css'
-
-const currentYear = new Date().getFullYear()
+import { HeroMotifs } from './components/MotionGlyphs'
+import { ChalkPortrait } from './components/ChalkPortrait'
+import { ProductOwnership } from './components/ProductOwnership'
 
 function App() {
   const page = useRef<HTMLDivElement>(null)
-  usePortfolioMotion(page)
+  const [projectFilter, setProjectFilter] = useState<ProjectTag | 'Todos'>(
+    'Todos',
+  )
+  const filteredProjects = [...featuredProjects, ...moreProjects].filter(
+    (project) =>
+      projectFilter === 'Todos' || project.tags.includes(projectFilter),
+  )
+  usePortfolioMotion(page, projectFilter)
+  useSectionReveal(
+    page,
+    '.selected-projects, .ownership > .container, .ai-intro, .ai-model-picker, .ai-showcase, .ai-practice-heading, .ai-practices, .capabilities, .process > .container, .about, .stack-heading, .contact > .container',
+  )
   return (
     <div ref={page}>
-      <a className="skip-link" href="#conteudo">
-        Pular para o conteúdo
-      </a>
-      <header className="site-header container" id="inicio">
-        <a
-          className="wordmark"
-          href="#inicio"
-          aria-label={`${portfolio.fullName}, início`}
-        >
-          <Asterisk />
-          {portfolio.name.toLowerCase()}
-          <span className="wordmark-dot">.</span>
-        </a>
-        <nav aria-label="Navegação principal">
-          <a className="nav-lab" href="#projetos">
-            Projetos
-          </a>
-          <a className="pill-link" href="#sobre">
-            Sobre mim
-          </a>
-          <a className="circle-link" href="#contato" aria-label="Contato">
-            <ArrowIcon diagonal />
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
       <main id="conteudo" tabIndex={-1}>
         <section className="hero container" aria-labelledby="titulo">
           <p className="hero-identity">
-            <strong>{portfolio.fullName}</strong> / {portfolio.role}
+            <strong>{tx(portfolio.fullName)}</strong> / {tx(portfolio.role)}
           </p>
-          <h1 id="titulo" aria-label="Voz, IA e software.">
+          <h1 id="titulo" aria-label={tx("Software, tempo real e IA.")}>
             <span className="hero-line" aria-hidden="true">
-              <span>Voz, IA e</span>
+              <span>{tx("Software,")}</span>
             </span>
             <span className="hero-line hero-line--last" aria-hidden="true">
-              <span>
-                software
-                <Asterisk className="hero-asterisk" />.
+              <span>{tx("tempo real e IA")}<Asterisk className="hero-asterisk" />.
               </span>
             </span>
           </h1>
-          <p className="hero-description">
-            Construo sistemas que conectam pessoas, modelos e produto.
-            <br />
-            <span>TypeScript, Go e Python. Da API ao worker.</span>
+          <p className="hero-description">{tx("Desenvolvo produtos, sistemas em tempo real e modelos de inteligência artificial, da pesquisa à aplicação.")}<br />
+            <span>{tx("TypeScript, Go e Python. APIs, infraestrutura e inferência.")}</span>
           </p>
+          <HeroMotifs />
         </section>
         <section
           className="lab container"
@@ -75,71 +68,91 @@ function App() {
           aria-labelledby="lab-titulo"
         >
           <div className="lab-header">
-            <h2 id="lab-titulo">
-              <span className="status-dot" />
-              Projetos com código aberto
-            </h2>
+            <h2 id="lab-titulo">{tx("Produtos que construí")}</h2>
             <span className="lab-rule" />
-            <p>
-              Arquitetura, implementação e documentação{' '}
-              <span aria-hidden="true">↓</span>
+            <p>{tx("Produtos, IA e infraestrutura")}<span aria-hidden="true">↓</span>
             </p>
           </div>
-          <div className="projects-grid">
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+          <div className="products-grid">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          <p className="lab-footnote">
-            Explore os detalhes de cada projeto ou abra o código no GitHub. Os
-            diagramas ilustram a arquitetura; não são execuções ao vivo.
-          </p>
-          <nav className="section-nav" aria-label="Explorar o portfólio">
-            <a href="#atuacao">
-              Atuação técnica <ArrowIcon />
+          <p className="lab-footnote">{tx("Voz, cuidado, pagamentos, integrações e gestão de produto. Explore cada produto e conheça sua página pública.")}</p>
+          {/* Catálogo Adila temporariamente oculto; componente e dados preservados. */}
+          <nav className="section-nav" aria-label={tx("Explorar o portfólio")}>
+            <a href="#produto-operacao">{tx("Produto e operação")}<ArrowIcon />
             </a>
-            <a href="#processo">
-              Decisões de engenharia <ArrowIcon />
+            <a href="#ia">{tx("IA aplicada")}<ArrowIcon />
             </a>
-            <a href="#tecnologias">
-              Stack de trabalho <ArrowIcon />
+            <a href="#atuacao">{tx("Atuação técnica")}<ArrowIcon />
+            </a>
+            <a href="#processo">{tx("Decisões de engenharia")}<ArrowIcon />
+            </a>
+            <a href="#tecnologias">{tx("Stack de trabalho")}<ArrowIcon />
             </a>
           </nav>
-          <div className="selected-projects">
+          {/* Temporarily hidden; keep the catalog and filters for reactivation. */}
+          <div className="selected-projects" hidden>
             <div className="project-list-heading">
-              <h2>Outros projetos públicos</h2>
-              <a href={`${profileLinks.github}?tab=repositories`}>
-                Todos os repositórios
-              </a>
+              <h2>{tx("Código aberto e ferramentas")}</h2>
+              <a href={`${profileLinks.github}?tab=repositories`}>{tx("Todos os repositórios")}</a>
             </div>
-            {moreProjects.map((project) => (
-              <article key={project.id} className="project-row">
-                <div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <ul>
-                    {project.technologies.map((technology) => (
-                      <li key={technology}>{technology}</li>
-                    ))}
-                  </ul>
-                </div>
-                <a
-                  className="circle-link"
-                  href={project.url}
-                  aria-label={`Código de ${project.title} no GitHub`}
+            <div
+              className="project-filters"
+              role="group"
+              aria-label={tx("Filtrar código aberto e ferramentas")}
+            >
+              {(['Todos', ...projectTags] as const).map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  className="project-filter"
+                  aria-pressed={projectFilter === tag}
+                  aria-controls="project-results"
+                  onClick={() => setProjectFilter(tag)}
                 >
-                  <ArrowIcon diagonal />
-                </a>
-              </article>
-            ))}
+                  {tx(tag)}
+                </button>
+              ))}
+            </div>
+            <p className="sr-only" role="status">
+              {tx(filteredProjects.length)} {tx("projetos exibidos. Filtro:")}{tx(' ')}
+              {tx(projectFilter)}.
+            </p>
+            <div id="project-results">
+              {filteredProjects.map((project) => (
+                <article key={project.id} className="project-row">
+                  <div>
+                    <h3>
+                      <a
+                        href={`/projetos/${project.id}`}
+                        aria-label={tx("Ver projeto {{value0}}", {value0: tx(project.title)})}
+                      >
+                        {tx(project.title)}
+                      </a>
+                    </h3>
+                    <p>{tx(project.description)}</p>
+                    <ul>
+                      {project.technologies.map((technology) => (
+                        <li key={technology}>{tx(technology)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <a
+                    className="circle-link"
+                    href={project.url}
+                    aria-label={tx("Código de {{value0}} no GitHub", {value0: tx(project.title)})}
+                  >
+                    <ArrowIcon diagonal />
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
-          <p className="professional-note">
-            Parte do meu trabalho na LAI está em repositórios privados. Aqui
-            estão os projetos públicos; a atuação com voz, mensageria e modelos
-            está descrita no{' '}
-            <a href={profileLinks.github}>meu perfil técnico</a>.
-          </p>
         </section>
+        <ProductOwnership />
+        <AISection />
         <CapabilitiesSection />
         <ProcessSection />
         <section
@@ -148,35 +161,26 @@ function App() {
           aria-labelledby="sobre-titulo"
         >
           <div className="about-label">
-            <span>
-              {portfolio.fullName}
-              <br />
-              {portfolio.role}
-            </span>
-            <Asterisk className="about-orbit" />
+            <div className="about-identity">
+              <strong>{tx(portfolio.fullName)}</strong>
+              <span>{tx(portfolio.role)}</span>
+            </div>
+            <ChalkPortrait />
           </div>
           <div className="about-content">
-            <h2 id="sobre-titulo">
-              Engenharia
-              <br />
-              de software.
-              <br />
-              <span>
-                IA aplicada
-                <br />a produto.
-              </span>
+            <h2 id="sobre-titulo">{tx("Engenharia")}<br />{tx("de software.")}<br />
+              <span>{tx("IA aplicada")}<br />{tx("a produto.")}</span>
             </h2>
             <div className="about-copy">
-              <p>{portfolio.about}</p>
-              <p>{portfolio.introduction}</p>
+              <p>{tx(portfolio.about)}</p>
+              <p>{tx(portfolio.introduction)}</p>
             </div>
-            <ul className="stack" aria-label="Tecnologias principais">
-              {portfolio.stack.map((technology) => (
-                <li key={technology}>{technology}</li>
+            <ul className="stack" aria-label={tx("Interesses pessoais")}>
+              {portfolio.interests.map((interest) => (
+                <li key={interest}>{tx(interest)}</li>
               ))}
             </ul>
-            <a className="about-profile-link" href={profileLinks.linkedin}>
-              Trajetória profissional no LinkedIn <ArrowIcon diagonal />
+            <a className="about-profile-link" href={profileLinks.linkedin}>{tx("Trajetória profissional no LinkedIn")}<ArrowIcon diagonal />
             </a>
           </div>
         </section>
@@ -188,48 +192,47 @@ function App() {
         >
           <div className="container">
             <div className="contact-top">
-              <span>Vamos falar de engenharia</span>
+              <span>{tx("Vamos falar de engenharia")}</span>
               <Asterisk />
             </div>
-            <h2 id="contato-titulo">
-              Qual problema
-              <br />
-              vamos resolver?
-            </h2>
+            <h2 id="contato-titulo">{tx("Qual problema")}<br />{tx("vamos resolver?")}</h2>
+            <p className="contact-description">{tx("Um produto novo, uma integração ou um desafio de engenharia. Me conte o que você tem em mente no meu WhatsApp profissional.")}</p>
             <div className="contact-bottom">
               <div>
-                <a className="contact-link" href={`mailto:${portfolio.email}`}>
-                  Vamos conversar <ArrowIcon diagonal />
-                </a>
-                <span className="contact-email">{portfolio.email}</span>
+                <div className="contact-actions">
+                  <a
+                    className="contact-link"
+                    href={`${profileLinks.whatsapp}?text=${encodeURIComponent(portfolio.whatsapp.message)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={tx("Conversar no WhatsApp (abre em nova aba)")}
+                  >{tx("Conversar no WhatsApp")}<ArrowIcon diagonal />
+                  </a>
+                  {portfolio.socials.map((social) => (
+                    <a
+                      key={social.label}
+                      className="contact-link contact-link--social"
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={tx("{{value0}} (abre em nova aba)", {value0: tx(social.label)})}
+                    >
+                      {tx(social.label)} <ArrowIcon diagonal />
+                    </a>
+                  ))}
+                </div>
+                <div className="contact-email">
+                  <span>{tx("Prefere e-mail?")}</span>
+                  <a href={`mailto:${portfolio.email}`}>{tx(portfolio.email)}</a>
+                </div>
               </div>
-              <a className="back-top" href="#inicio">
-                De volta ao topo <span aria-hidden="true">↑</span>
+              <a className="back-top" href="#inicio">{tx("De volta ao topo")}<ArrowIcon direction="up" />
               </a>
             </div>
-            <ul className="socials">
-              {portfolio.socials.map((social) => (
-                <li key={social.label}>
-                  <a href={social.url}>{social.label}</a>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
       </main>
-      <footer className="site-footer container">
-        <a
-          className="wordmark"
-          href="#inicio"
-          aria-label={`${portfolio.fullName}, início`}
-        >
-          {portfolio.name.toLowerCase()}.
-        </a>
-        <span>Software, sistemas em tempo real e IA aplicada.</span>
-        <span>
-          © {currentYear} {portfolio.fullName}
-        </span>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

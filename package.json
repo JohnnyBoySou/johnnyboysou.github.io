@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && bun scripts/generate-pages.ts",
     "lint": "oxlint",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
@@ -16,8 +16,10 @@
     "@fontsource-variable/google-sans-flex": "^5.3.1",
     "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0",
+    "i18next": "^26.4.2",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-i18next": "^17.0.15"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

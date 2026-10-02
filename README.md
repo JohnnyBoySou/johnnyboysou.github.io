@@ -25,9 +25,10 @@ Abra a URL exibida no terminal (http://localhost:5174, porta fixa com `strictPor
 
 ## Personalização
 
-- `src/data/portfolio.ts`: perfil profissional, contatos, projetos em destaque e outros repositórios públicos.
+- `src/data/portfolio.ts`: perfil profissional, contatos e repositórios públicos.
 - `src/data/sections.ts`: atuação técnica, decisões de engenharia e stack.
-- `src/components/ProjectCard.tsx` e `.css`: diagramas ilustrativos e detalhes expansíveis dos projetos.
+- `src/data/products.ts`: produtos em produção, funcionalidades e links.
+- `src/components/ProductCard.tsx` e `.css`: ilustrações e links para as páginas dos produtos.
 - `src/components/PortfolioSections.tsx` e `.css`: acordeão de atuação, decisões e seletor de stack.
 - `src/hooks/usePortfolioMotion.ts`: animações de entrada e rolagem com GSAP e ScrollTrigger.
 - `src/App.tsx` e `.css`: composição e layout responsivo.
@@ -62,11 +63,11 @@ E2E_BASE_URL=https://johnnyboysou.github.io bunx playwright test
 
 ## Direção visual e animação
 
-Inspirado na composição de [Shopify Design](https://shopify.design/): tipografia grande, espaço em branco e galeria visual. Os diagramas são ilustrações próprias de repositórios públicos, com links para o código.
+Inspirado na composição de [Shopify Design](https://shopify.design/): tipografia grande, espaço em branco e galeria visual. Os produtos ganham ilustrações próprias e links para suas páginas públicas. Código aberto e ferramentas aparecem em uma seção secundária.
 
-GSAP e `@gsap/react` controlam a entrada, a rotação de elementos decorativos na rolagem e as respostas aos cliques. `useGSAP` e `gsap.matchMedia` limpam as animações ao desmontar ou trocar de breakpoint/preferência de movimento. Não há rolagem artificial nem animação infinita. A preferência `prefers-reduced-motion` desativa movimento e mantém as interações.
+GSAP e `@gsap/react` controlam a entrada, a rotação de elementos decorativos na rolagem e as respostas aos cliques. `useGSAP` e `gsap.matchMedia` limpam as animações ao desmontar ou trocar de breakpoint/preferência de movimento. Não há rolagem artificial. As microinterações são curtas; o indicador da abertura anima apenas durante o carregamento. A preferência `prefers-reduced-motion` desativa movimento e mantém as interações. Os comportamentos e comandos de validação estão em [docs/motion.md](docs/motion.md) e [docs/theme.md](docs/theme.md).
 
-Os projetos em destaque são definidos em `featuredProjects` e os demais em `moreProjects`.
+Os cinco produtos em destaque são definidos em `products`. `featuredProjects` e `moreProjects` compõem a seção de código aberto. Os estágios dos modelos do Shamar seguem sua página pública, sem equiparar pesquisa a produção.
 
 ## Testes de navegador
 
@@ -78,3 +79,30 @@ bun run test:e2e
 ```
 
 A suíte serve o build de produção em `127.0.0.1:4175` e verifica detalhes dos projetos, links e contato, acordeão, stack, teclado, âncoras, fonte, overflow e mudança da preferência de movimento em tempo real. Os testes não usam serviços externos.
+
+
+## Páginas e modelos
+
+- `/`: portfólio e galerias de projetos.
+- `/modelos`: Lume, Dália, Lira, Sonata, Vita e Dit 1, com filtros por produto, entrada/saída, estágio e links públicos.
+- `/projetos/:id`: página própria para os cinco produtos e os seis repositórios apresentados.
+
+O catálogo está em `src/data/models.ts`; os fluxos dos produtos, em `src/data/productStories.ts`. `src/pages/PortfolioPages.tsx` resolve as rotas e compartilha cabeçalho e rodapé com a página inicial. A navegação usa links nativos, incluindo voltar/avançar e abertura em nova aba.
+
+Após o Vite, `scripts/generate-pages.ts` gera entradas HTML com título e descrição para as 12 rotas, além de `404.html`. Isso permite acesso direto e recarregamento em hospedagem estática, inclusive GitHub Pages, sem depender de um fallback de SPA no servidor. O conteúdo é renderizado no cliente por React; os HTMLs gerados não são uma implementação de SSR.
+
+Os testes cobrem os filtros de modelos, associação com os produtos, fragmentos como `/modelos#dit`, acesso direto às 11 páginas de projetos, recarregamento, histórico e página não encontrada.
+
+
+## Destaque de IA na página inicial
+
+A seção `/#ia` é implementada em `src/components/AISection.tsx` e `.css`. O seletor reutiliza o catálogo `src/data/models.ts`, com Dit 1 como seleção inicial. Cada modelo apresenta aplicação, estágio, entrada/saída e links para os detalhes e o produto. Os três blocos de atuação explicam treinamento/fine-tuning, avaliação e inferência.
+
+A animação de troca usa GSAP com limpeza por seleção e respeito a movimento reduzido. `tests/ai-section.spec.ts` verifica seleção por teclado, vínculo com o catálogo, estágios, tema escuro e overflow.
+
+As seções também usam `src/hooks/useSectionReveal.ts` para aparecer uma vez durante a rolagem, com fade e deslocamento curto. O efeito preserva foco por teclado, links diretos e movimento reduzido; veja [docs/motion.md](docs/motion.md).
+
+
+## Stack de trabalho
+
+`src/data/stack.ts` contém as tecnologias, áreas, papéis e exemplos de utilização. `src/components/TechnologySection.tsx` e `.css` apresentam a faixa horizontal com filtros e progresso. GSAP ScrollTrigger fixa a área dos cards e liga o deslocamento horizontal à rolagem vertical da página. A barra acompanha o progresso; controles anterior/próximo e teclado (setas, Home/End, PageUp/PageDown) navegam pelo mesmo percurso. Movimento reduzido e telas com menos de 740 px de altura usam navegação horizontal direta, sem fixação. O recorte da faixa tem cantos arredondados. `tests/stack.spec.ts` verifica navegação, filtros, limites, gestos e overflow em desktop e mobile.

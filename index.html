@@ -1,18 +1,68 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-boot="loading">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#fafbff" />
+    <script>
+      // Apply the preference before first paint, even when storage is blocked.
+      (() => {
+        let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        try {
+          const saved = localStorage.getItem('portfolio-theme')
+          if (saved === 'dark' || saved === 'light') theme = saved
+        } catch { /* Fall back to the system preference. */ }
+        document.documentElement.dataset.theme = theme
+        document.documentElement.style.colorScheme = theme
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'dark' ? '#141923' : '#fafbff'
+      })()
+    </script>
     <meta
       name="description"
-      content="João Sousa, Tech Lead na LAI. Sistemas de voz, mensageria, infraestrutura de IA e ferramentas para desenvolvedores em TypeScript, Go e Python."
+      content="João Sousa, Tech Lead. Sistemas de voz, mensageria, infraestrutura de IA e ferramentas para desenvolvedores em TypeScript, Go e Python."
     />
     <title>João Sousa | Software, voz e IA</title>
+    <style>
+      #boot-loader { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; --boot-ink: #202432; background: #fafbff; color: var(--boot-ink); pointer-events: none; font-family: 'Google Sans Flex Variable', Arial, sans-serif; }
+      [data-theme='dark'] #boot-loader { --boot-ink: #edf0f8; background: #141923; }
+      .boot-composition { width: 100%; padding: clamp(20px, 4vw, 72px); text-align: center; }
+      .boot-name { display: inline-block; position: relative; text-align: left; white-space: nowrap; font-size: clamp(80px, 34vw, 650px); line-height: 1; font-weight: 300; letter-spacing: -.07em; margin-left: -.035em; padding-inline-end: .07em; margin-inline-end: -.07em; transform: translateY(-.06em); color: color-mix(in srgb, var(--boot-ink) 14%, transparent); }
+      .boot-name::after { content: attr(data-label); position: absolute; inset: 0; color: var(--boot-ink); clip-path: inset(-.12em calc(100% - var(--boot-fill, 0%)) -.15em 0); transition: clip-path 320ms cubic-bezier(.25,.7,.25,1); }
+      @supports (mask-image: linear-gradient(#000, transparent)) {
+        .boot-name::after { clip-path: none; mask-image: linear-gradient(90deg, #000 45%, transparent 50%); mask-size: 240% 100%; mask-repeat: no-repeat; mask-position: calc(100% - var(--boot-fill, 0%)) 0; transition: mask-position 320ms cubic-bezier(.25,.7,.25,1); }
+      }
+      #boot-error { font-size: 14px; margin: 24px 0 0; }
+      #boot-retry { pointer-events: auto; color: inherit; font-size: 14px; margin-top: 24px; }
+      #boot-retry:not([hidden]) { display: inline-block; }
+      [data-boot='leaving'] #boot-loader { animation: boot-exit 480ms cubic-bezier(.65,0,.25,1) forwards; }
+      [data-boot='error'] .boot-name::after { transition: none; }
+      @keyframes boot-exit { to { transform: translateY(-100%); } }
+      @media (prefers-reduced-motion: reduce) { #boot-loader *, #boot-loader *::after, [data-boot='leaving'] #boot-loader { animation: none !important; transition: none !important; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="boot-loader" role="status" aria-live="polite" aria-label="Carregando portfólio">
+      <div class="boot-composition">
+        <div class="boot-name" data-label="sousa." aria-hidden="true">sousa.</div>
+        <p id="boot-error" hidden>Não foi possível abrir o portfólio.</p>
+        <a id="boot-retry" href="" hidden>Recarregar página</a>
+      </div>
+    </div>
+    <div id="root" aria-busy="true"></div>
+    <noscript><style>#boot-loader { display: none; }</style><p>Ative o JavaScript para explorar este portfólio.</p></noscript>
+    <script>
+      // A failed application download should show an exit, never an endless spinner.
+      setTimeout(() => {
+        if (!document.getElementById('root').childElementCount) {
+          document.documentElement.dataset.boot = 'error'
+          document.getElementById('boot-loader').setAttribute('aria-label', 'Não foi possível abrir o portfólio')
+          document.getElementById('boot-error').hidden = false
+          document.getElementById('boot-retry').hidden = false
+        }
+      }, 8000)
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,0 +1,127 @@
+html.has-scroll-pill {
+  scrollbar-width: none;
+}
+html.has-scroll-pill::-webkit-scrollbar {
+  display: none;
+}
+.scroll-pill {
+  position: fixed;
+  z-index: 45;
+  right: max(4px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: clamp(260px, 38svh, 340px);
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  border-radius: 100px;
+  outline: none;
+}
+.scroll-pill[hidden] { display: none; }
+.scroll-pill-control { position: absolute; inset: 0; border-radius: inherit; outline: none; }
+.scroll-pill-shell {
+  position: absolute;
+  inset: 0 13px;
+  border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  box-shadow: 0 4px 18px #1018281c;
+  backdrop-filter: blur(12px);
+  transition: border-color 180ms, box-shadow 180ms;
+}
+.scroll-pill-track {
+  position: absolute;
+  inset: 5px 4px;
+}
+.scroll-pill-thumb {
+  display: block;
+  width: 100%;
+  height: 28px;
+  border-radius: 100px;
+  background: var(--focus);
+  will-change: transform;
+}
+.scroll-pill:hover .scroll-pill-shell,
+.scroll-pill:focus-within .scroll-pill-shell,
+.scroll-pill-control[data-dragging] .scroll-pill-shell {
+  border-color: var(--focus);
+  box-shadow: 0 4px 22px #10182826;
+}
+.scroll-pill-control:focus-visible .scroll-pill-shell {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+.scroll-pill-control[data-dragging] { cursor: grabbing; }
+.scroll-pill-markers { position: absolute; inset: 0; pointer-events: none; }
+.scroll-pill-mark {
+  position: absolute;
+  left: -11px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+}
+.scroll-pill-tick {
+  width: 7px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--muted);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--surface) 60%, transparent);
+  transition: transform 450ms cubic-bezier(.2, 1.8, .4, 1), background-color 180ms;
+}
+.scroll-pill-mark[aria-current] .scroll-pill-tick,
+.scroll-pill-mark:hover .scroll-pill-tick,
+.scroll-pill-mark:focus-visible .scroll-pill-tick {
+  background: var(--focus);
+  transform: scaleX(1.7);
+}
+.scroll-pill-mark:focus-visible { outline-offset: 0; border-radius: 8px; }
+.scroll-pill-tooltip {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translate(6px, -50%) scale(.96);
+  transform-origin: right center;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 4px 18px #10182820;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  max-width: min(240px, calc(100vw - 70px));
+  white-space: normal;
+  width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms, visibility 150ms, transform 400ms cubic-bezier(.2, 1.6, .4, 1);
+}
+.scroll-pill-mark:hover .scroll-pill-tooltip,
+.scroll-pill-mark:focus .scroll-pill-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -50%) scale(1);
+}
+html:not([data-boot='ready']) .scroll-pill { visibility: hidden; }
+@media (max-width: 799px) {
+  .scroll-pill {
+    width: 24px;
+    right: env(safe-area-inset-right, 0px);
+    height: clamp(240px, 36svh, 300px);
+  }
+  .scroll-pill-shell { inset-inline: 7px; }
+  .scroll-pill-track { inset: 4px 2px; }
+  .scroll-pill-mark { left: -17px; }
+}
+@media (forced-colors: active) {
+  .scroll-pill-shell { background: Canvas; border-color: CanvasText; }
+  .scroll-pill-thumb { background: Highlight; }
+}
