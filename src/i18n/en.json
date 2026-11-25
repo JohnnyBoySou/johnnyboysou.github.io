@@ -76,7 +76,6 @@
   "Interface": "Interface",
   "Entregar": "Deliver",
   "Revisão": "Review",
-  "Retrato de João Sousa desenhado em giz": "Chalk portrait of João Sousa",
   "Pular para o conteúdo": "Skip to content",
   "{{value0}}, início": "{{value0}}, home",
   "Navegação principal": "Main navigation",
@@ -152,7 +151,6 @@
   "Tecnologias e suas utilizações": "Technologies and their uses",
   "Progresso pelas tecnologias": "Progress through technologies",
   "tecnologias": "technologies",
-  "Tema escuro": "Dark theme",
   "Intenção": "Intent",
   "Próximo passo": "Next step",
   "Documento": "Document",
@@ -236,8 +234,6 @@
   "Minha stack": "My stack",
   "Início": "Home",
   "A stack completa, conectada pelo trabalho.": "The complete stack, connected through my work.",
-  "Acender a luz": "Turn the light on",
-  "Apagar a luz": "Turn the light off",
   "João Sousa, Tech Lead. Engenharia de software, sistemas de voz, mensageria, modelos de IA e ferramentas para desenvolvedores.": "João Sousa, Tech Lead. Software engineering, voice systems, messaging, AI models and developer tools.",
   "Vídeo → sinal": "Video → signal",
   "Histórico → tendência": "History → trend",
@@ -656,5 +652,8 @@
   "Retentativas": "Retries",
   "Telemonitoramento": "Remote monitoring",
   "Versionamento": "Versioning",
-  "Developer tooling": "Developer tooling"
+  "Developer tooling": "Developer tooling",
+  "Ver produtos": "See products",
+  "Manifesto": "Manifesto",
+  "Gosto de software que some no uso. Por isso construo voz, tempo real e IA com o mesmo cuidado: simples por fora, sólido por dentro.": "I like software that disappears in use. So I build voice, real-time and AI with the same care: simple outside, solid inside."
 }

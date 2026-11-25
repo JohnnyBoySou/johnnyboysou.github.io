@@ -592,8 +592,7 @@ a.product-visual {
   .site-header nav {
     gap: 4px;
   }
-  .site-header .circle-link,
-  .site-header .theme-toggle {
+  .site-header .circle-link {
     width: 36px;
     height: 36px;
     min-height: 36px;

@@ -1,24 +1,15 @@
 <!doctype html>
-<html lang="pt-BR" data-boot="loading">
+<html lang="pt-BR" data-boot="loading" data-theme="dark" style="color-scheme: dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="/node_modules/@fontsource-variable/google-sans-flex/files/google-sans-flex-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <meta name="theme-color" content="#fafbff" />
+    <meta name="theme-color" content="#000000" />
     <script>
-      // Apply the preference before first paint, even when storage is blocked.
-      (() => {
-        let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        try {
-          const saved = localStorage.getItem('portfolio-theme')
-          if (saved === 'dark' || saved === 'light') theme = saved
-        } catch { /* Fall back to the system preference. */ }
-        document.documentElement.dataset.theme = theme
-        document.documentElement.style.colorScheme = theme
-        document.querySelector('meta[name="theme-color"]').content =
-          theme === 'dark' ? '#141923' : '#fafbff'
-      })()
+      // The portfolio uses a single dark palette; legacy saved choices are ignored.
+      document.documentElement.dataset.theme = 'dark'
+      document.documentElement.style.colorScheme = 'dark'
     </script>
     <meta
       name="description"
@@ -26,8 +17,7 @@
     />
     <title>João Sousa | Software, voz e IA</title>
     <style>
-      #boot-loader { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; --boot-ink: #202432; background: #fafbff; color: var(--boot-ink); pointer-events: none; font-family: 'Google Sans Flex Variable', Arial, sans-serif; }
-      [data-theme='dark'] #boot-loader { --boot-ink: #edf0f8; background: #141923; }
+      #boot-loader { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; --boot-ink: #fafafa; background: #000; color: var(--boot-ink); pointer-events: none; font-family: 'Google Sans Flex Variable', Arial, sans-serif; }
       .boot-composition { width: 100%; padding: clamp(20px, 4vw, 72px); text-align: center; }
       .boot-name { display: inline-block; position: relative; text-align: left; white-space: nowrap; font-size: clamp(80px, 34vw, 650px); line-height: 1; font-weight: 300; letter-spacing: -.07em; margin-left: -.035em; padding-inline-end: .07em; margin-inline-end: -.07em; transform: translateY(-.06em); color: color-mix(in srgb, var(--boot-ink) 14%, transparent); }
       .boot-name::after { content: attr(data-label); position: absolute; inset: 0; color: var(--boot-ink); clip-path: inset(-.12em calc(100% - var(--boot-fill, 0%)) -.15em 0); transition: clip-path 320ms cubic-bezier(.25,.7,.25,1); }

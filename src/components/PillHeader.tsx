@@ -5,7 +5,6 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { portfolio } from '../data/portfolio'
 import { ArrowIcon, Asterisk } from './Icons'
-import { ThemeToggle } from './ThemeToggle'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import './PillHeader.css'
 
@@ -117,7 +116,6 @@ export function PillHeader({ section }: { section?: 'projects' | 'models' }) {
             </a>
             <div className="pill-controls">
               <LanguageSwitcher />
-              <ThemeToggle />
               <button
                 ref={trigger}
                 className="menu-trigger"

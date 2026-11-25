@@ -81,6 +81,9 @@ test('teclado permite pular o menu, abrir produtos e acessar a página pública'
   await page.keyboard.press('Enter')
   await expect(page.locator('main')).toBeFocused()
   await page.keyboard.press('Tab')
+  await expect(page.getByRole('link', { name: 'Ver produtos', exact: true })).toBeFocused()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Tab')
   const project = page.getByRole('link', {
     name: 'Ver projeto Disk',
     exact: true,

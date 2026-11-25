@@ -76,7 +76,6 @@
   "Interface": "Interfaz",
   "Entregar": "Entregar",
   "Revisão": "Revisión",
-  "Retrato de João Sousa desenhado em giz": "Retrato de João Sousa dibujado con tiza",
   "Pular para o conteúdo": "Saltar al contenido",
   "{{value0}}, início": "{{value0}}, inicio",
   "Navegação principal": "Navegación principal",
@@ -152,7 +151,6 @@
   "Tecnologias e suas utilizações": "Tecnologías y sus usos",
   "Progresso pelas tecnologias": "Progreso por las tecnologías",
   "tecnologias": "tecnologías",
-  "Tema escuro": "Tema oscuro",
   "Intenção": "Intención",
   "Próximo passo": "Próximo paso",
   "Documento": "Documento",
@@ -236,8 +234,6 @@
   "Minha stack": "Mi stack",
   "Início": "Inicio",
   "A stack completa, conectada pelo trabalho.": "El stack completo, conectado por mi trabajo.",
-  "Acender a luz": "Encender la luz",
-  "Apagar a luz": "Apagar la luz",
   "João Sousa, Tech Lead. Engenharia de software, sistemas de voz, mensageria, modelos de IA e ferramentas para desenvolvedores.": "João Sousa, Tech Lead. Ingeniería de software, sistemas de voz, mensajería, modelos de IA y herramientas para desarrolladores.",
   "Vídeo → sinal": "Vídeo → señal",
   "Histórico → tendência": "Historial → tendencia",
@@ -656,5 +652,8 @@
   "Retentativas": "Reintentos",
   "Telemonitoramento": "Telemonitorización",
   "Versionamento": "Versionado",
-  "Developer tooling": "Herramientas de desarrollo"
+  "Developer tooling": "Herramientas de desarrollo",
+  "Ver produtos": "Ver productos",
+  "Manifesto": "Manifiesto",
+  "Gosto de software que some no uso. Por isso construo voz, tempo real e IA com o mesmo cuidado: simples por fora, sólido por dentro.": "Me gusta el software que desaparece al usarlo. Por eso construyo voz, tiempo real e IA con el mismo cuidado: simple por fuera, sólido por dentro."
 }

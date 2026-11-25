@@ -1,24 +1,13 @@
-# Temas e transição de luz
+# Tema
 
-A paleta usa tokens em `src/index.css`: superfícies, texto, divisórias, foco e cores dos produtos. Os estilos compartilhados em `src/theme.css` adaptam as seções e o header aos dois temas.
+O portfólio usa uma única paleta escura, inspirada em interfaces editoriais monocromáticas: fundo preto, texto branco e cinzas neutros. A cor fica reservada às artes dos produtos.
 
-O botão de lâmpada no header alterna o tema. No escuro, a imagem do tema claro se recolhe até o botão enquanto perde luminosidade. Ao voltar, a luz se expande pelo viewport. A transição dura 900 ms e usa a View Transitions API, sem dependências adicionais.
+Os tokens ficam em `src/index.css` (`--page`, `--surface`, `--soft`, `--ink`, `--muted`, `--line`, `--focus` e as cores dos produtos). O script em `index.html` fixa `data-theme="dark"` antes da primeira pintura, e `src/elegance.css` — carregado por último — define a camada visual: tipografia, botões em pílula, cards escuros, manifesto e rodapé.
 
-A primeira visita acompanha a preferência do sistema. Uma escolha explícita fica em `localStorage` na chave `portfolio-theme`. O script em `index.html` aplica a preferência antes da primeira pintura. Se o armazenamento estiver bloqueado, a escolha continua funcionando na página atual.
-
-Com movimento reduzido ou sem suporte à API, a troca é imediata. Cliques repetidos durante a animação são ignorados, preservando o foco no botão. Ativar movimento reduzido durante a transição também a interrompe com segurança.
+Preferências antigas salvas em `localStorage` (`portfolio-theme`) são ignoradas.
 
 ## Validação
 
 ```bash
-bun run check
 bunx playwright test tests/theme.spec.ts
-```
-
-A suíte usa o build em `dist/` e cobre desktop, 390 px e 320 px: teclado, persistência, preferência do sistema, animação, cliques repetidos, interrupção, movimento reduzido, ausência da API e armazenamento bloqueado.
-
-Para validar uma versão já publicada:
-
-```bash
-E2E_BASE_URL=https://johnnyboysou.github.io bunx playwright test tests/theme.spec.ts
 ```

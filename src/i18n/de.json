@@ -74,7 +74,6 @@
   "Interface": "Benutzeroberfläche",
   "Entregar": "Ausliefern",
   "Revisão": "Prüfung",
-  "Retrato de João Sousa desenhado em giz": "Kreideporträt von João Sousa",
   "Pular para o conteúdo": "Zum Inhalt springen",
   "{{value0}}, início": "{{value0}}, Startseite",
   "Navegação principal": "Hauptnavigation",
@@ -150,7 +149,6 @@
   "Tecnologias e suas utilizações": "Technologien und ihre Anwendung",
   "Progresso pelas tecnologias": "Fortschritt durch die Technologien",
   "tecnologias": "Technologien",
-  "Tema escuro": "Dunkles Design",
   "Intenção": "Absicht",
   "Próximo passo": "Nächster Schritt",
   "Documento": "Dokument",
@@ -234,8 +232,6 @@
   "Minha stack": "Mein Stack",
   "Início": "Startseite",
   "A stack completa, conectada pelo trabalho.": "Der gesamte Stack, verbunden durch meine Arbeit.",
-  "Acender a luz": "Licht einschalten",
-  "Apagar a luz": "Licht ausschalten",
   "João Sousa, Tech Lead. Engenharia de software, sistemas de voz, mensageria, modelos de IA e ferramentas para desenvolvedores.": "João Sousa, Tech Lead. Software-Engineering, Sprachsysteme, Messaging, KI-Modelle und Entwicklerwerkzeuge.",
   "Vídeo → sinal": "Video → Signal",
   "Histórico → tendência": "Verlauf → Trend",
@@ -656,5 +652,8 @@
   "Retentativas": "Wiederholungen",
   "Telemonitoramento": "Fernüberwachung",
   "Versionamento": "Versionierung",
-  "Developer tooling": "Entwicklerwerkzeuge"
+  "Developer tooling": "Entwicklerwerkzeuge",
+  "Ver produtos": "Produkte ansehen",
+  "Manifesto": "Manifest",
+  "Gosto de software que some no uso. Por isso construo voz, tempo real e IA com o mesmo cuidado: simples por fora, sólido por dentro.": "Ich mag Software, die im Gebrauch verschwindet. Darum baue ich Sprache, Echtzeit und KI mit derselben Sorgfalt: außen einfach, innen solide."
 }

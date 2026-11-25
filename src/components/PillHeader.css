@@ -44,14 +44,6 @@
   align-items: center;
   gap: 8px;
 }
-.pill-controls .theme-toggle {
-  position: static;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  border-color: transparent;
-  background: transparent;
-}
 .menu-trigger {
   display: flex;
   align-items: center;
@@ -179,8 +171,7 @@
   .pill-bar .wordmark { font-size: 26px; }
   .pill-bar .wordmark svg { width: 18px; height: 18px; }
   .pill-controls { gap: 4px; }
-  .pill-controls .theme-toggle { width: 40px; height: 44px; padding: 9px; }
-  .pill-menu-content { padding: 4px 10px 18px; }
+    .pill-menu-content { padding: 4px 10px 18px; }
   .pill-menu-link { padding: 14px; gap: 10px; }
   .pill-menu-link strong { font-size: 28px; }
   .pill-menu-link svg { width: 22px; height: 22px; }

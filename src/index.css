@@ -7,38 +7,25 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --page: #fafbff;
-  --surface: #ffffff;
-  --soft: #edf0f7;
-  --ink: #202432;
-  --muted: #5d6577;
-  --line: #dce0eb;
-  --focus: #6550ad;
+  /* Monochrome night palette; color lives only in the product artwork. */
+  --page: #000000;
+  --surface: #0b0b0d;
+  --soft: #141417;
+  --ink: #fafafa;
+  --muted: #8b8b94;
+  --line: #1f1f24;
+  --focus: #a5b4fc;
   --violet: #d8cef2;
   --coral: #f5a090;
   --lime: #d1e5ae;
   --cyan: #b6dfe8;
   --gold: #ecdfa7;
-  --process: #eeebf7;
-  --process-muted: #5f586d;
-  --process-line: #d9d2e8;
-}
-:root[data-theme='dark'] {
-  --page: #141923;
-  --surface: #1d2432;
-  --soft: #242d3e;
-  --ink: #edf0f8;
-  --muted: #abb5c9;
-  --line: #364156;
-  --focus: #c4b5fd;
-  --violet: #b5a5d4;
-  --coral: #d6988a;
-  --lime: #acbf8e;
-  --cyan: #97bdc9;
-  --gold: #c9bc8e;
-  --process: #222638;
-  --process-muted: #bcb8ce;
-  --process-line: #44435b;
+  --process: #0b0b0d;
+  --process-muted: #8b8b94;
+  --process-line: #1f1f24;
+  --display-tracking: -0.055em;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -84,8 +71,8 @@ svg {
   flex-shrink: 0;
 }
 ::selection {
-  background: var(--violet);
-  color: #202432;
+  background: #fafafa;
+  color: #000;
 }
 .sr-only {
   position: absolute;

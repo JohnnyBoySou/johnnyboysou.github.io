@@ -14,12 +14,12 @@ test('catálogos têm as mesmas traduções e preservam interpolações', () => 
   }
 })
 
-test('bandeira ao lado do tema troca os quatro idiomas e persiste entre páginas', async ({ page }) => {
+test('bandeira no header troca os quatro idiomas e persiste entre páginas', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/')
   await expect(page.locator('html')).toHaveAttribute('data-boot', 'ready')
-  await expect(page.locator('.language-switcher + .theme-toggle')).toHaveCount(1)
+  await expect(page.locator('.language-switcher + .menu-trigger')).toHaveCount(1)
   for (const [label, code, flag, headline] of [
     ['Deutsch', 'de', '🇩🇪', 'Echtzeit und KI'],
     ['English', 'en', '🇺🇸', 'real time and AI'],
@@ -72,12 +72,12 @@ test('seletor funciona pelo teclado, fecha com Escape e cabe na tela', async ({ 
   await expect(trigger).toBeFocused()
   await expect(trigger).toHaveAttribute('aria-expanded', 'false')
   await trigger.click()
-  await page.locator('.theme-toggle').focus()
+  await page.locator('.menu-trigger').focus()
   await expect(trigger).toHaveAttribute('aria-expanded', 'false')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
 
-test('tradução preserva o filtro da stack e o tema', async ({ page }) => {
+test('tradução preserva o filtro da stack e o tema escuro', async ({ page }) => {
   await page.goto('/#tecnologias')
   const infrastructure = page.getByRole('button', { name: 'Infraestrutura', exact: true })
   await infrastructure.focus()
@@ -89,7 +89,6 @@ test('tradução preserva o filtro da stack e o tema', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Infrastruktur', exact: true })).toHaveAttribute('aria-pressed', 'true')
   await expect(page.locator('#stack-viewport li')).toHaveCount(count)
   await expect(page.locator('#stack-viewport')).toContainText('Dienste und Worker in Containern.')
-  await page.locator('.theme-toggle').click()
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await page.locator('.language-trigger').click()
   await page.getByRole('button', { name: 'English', exact: true }).click()

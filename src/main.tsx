@@ -6,6 +6,7 @@ import { languageReady } from './i18n'
 import { LocalizedPortfolio } from './i18n/LocalizedPortfolio'
 import './theme.css'
 import './microinteractions.css'
+import './elegance.css'
 
 void languageReady.then(() => createRoot(document.getElementById('root')!).render(
   <StrictMode>

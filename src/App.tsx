@@ -23,8 +23,8 @@ import {
 } from './components/PortfolioSections'
 import './App.css'
 import { HeroMotifs } from './components/MotionGlyphs'
-import { ChalkPortrait } from './components/ChalkPortrait'
 import { ProductOwnership } from './components/ProductOwnership'
+import { Manifesto } from './components/Manifesto'
 
 function App() {
   const page = useRef<HTMLDivElement>(null)
@@ -60,8 +60,14 @@ function App() {
           <p className="hero-description">{tx("Desenvolvo produtos, sistemas em tempo real e modelos de inteligência artificial, da pesquisa à aplicação.")}<br />
             <span>{tx("TypeScript, Go e Python. APIs, infraestrutura e inferência.")}</span>
           </p>
+          <div className="hero-actions">
+            <a className="button button--primary" href="#projetos">{tx("Ver produtos")}<ArrowIcon />
+            </a>
+            <a className="button button--ghost" href="#contato">{tx("Vamos conversar")}</a>
+          </div>
           <HeroMotifs />
         </section>
+        <Manifesto />
         <section
           className="lab container"
           id="projetos"
@@ -165,7 +171,6 @@ function App() {
               <strong>{tx(portfolio.fullName)}</strong>
               <span>{tx(portfolio.role)}</span>
             </div>
-            <ChalkPortrait />
           </div>
           <div className="about-content">
             <h2 id="sobre-titulo">{tx("Engenharia")}<br />{tx("de software.")}<br />

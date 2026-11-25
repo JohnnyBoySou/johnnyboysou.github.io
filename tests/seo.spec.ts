@@ -26,17 +26,3 @@ test('HTML direto, sitemap e robots apresentam URLs e metadados consistentes', a
   }
   expect(await (await request.get('/404.html')).text()).toContain('content="noindex, follow"')
 })
-
-test('retratos não competem com o carregamento inicial e chegam ao aproximar a seção', async ({ page }) => {
-  const images: string[] = []
-  page.on('request', request => {
-    if (request.url().includes('joao-sousa-chalk')) images.push(request.url())
-  })
-  await page.goto('/')
-  await expect(page.locator('html')).toHaveAttribute('data-boot', 'ready')
-  expect(images).toHaveLength(0)
-  await page.locator('.chalk-portrait').scrollIntoViewIfNeeded()
-  await expect.poll(() => images.length).toBeGreaterThan(0)
-  expect(images.every(url => url.endsWith('.webp'))).toBe(true)
-  await expect(page.locator('.chalk-portrait')).toBeInViewport()
-})

@@ -20,7 +20,7 @@ test('pílula abre pelo teclado, fecha com Escape e devolve o foco', async ({ pa
   await expect(nav).toHaveCount(0)
   await expect(page.locator('#site-menu')).toHaveCSS('height', '0px')
   await page.keyboard.press('Tab')
-  await expect(page.getByRole('link', { name: 'Ver projeto Disk', exact: true })).toBeFocused()
+  await expect(page.getByRole('link', { name: 'Ver produtos', exact: true })).toBeFocused()
 })
 
 test('menu navega para a seção, fecha e mantém o destino abaixo da pílula', async ({ page }) => {
@@ -50,7 +50,7 @@ test('clique fora e saída do foco fecham o menu sem prender a navegação', asy
   await page.getByRole('button', { name: 'Abrir menu' }).click()
   await page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Contato', exact: true }).focus()
   await page.keyboard.press('Tab')
-  await expect(page.getByRole('link', { name: 'Ver projeto Disk', exact: true })).toBeFocused()
+  await expect(page.getByRole('link', { name: 'Ver produtos', exact: true })).toBeFocused()
   await expect(page.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute('aria-expanded', 'false')
 })
 
@@ -71,11 +71,10 @@ test('animação tolera cliques rápidos e mudança para movimento reduzido', as
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
 
-test('menu aberto se adapta a telas baixas e troca de tema', async ({ page }) => {
+test('menu aberto se adapta a telas baixas', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'light' })
   await page.goto('/')
   await page.getByRole('button', { name: 'Abrir menu' }).click()
-  await page.getByRole('button', { name: 'Tema escuro', exact: true }).click()
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await expect(page.getByRole('button', { name: 'Fechar menu' })).toHaveAttribute('aria-expanded', 'true')
   await page.setViewportSize({ width: 568, height: 320 })

@@ -1,0 +1,261 @@
+/*
+ * Camada editorial escura: preto puro, tipografia grande e fechada,
+ * botões em pílula e cor apenas nas artes dos produtos.
+ * Carregada por último para sobrescrever os estilos das seções.
+ */
+
+body {
+  background: var(--page);
+}
+
+/* ——— Tipografia de display ——— */
+h1,
+h2 {
+  font-weight: 700;
+  letter-spacing: var(--display-tracking);
+}
+.hero h1 {
+  font-size: clamp(30px, 9.8vw, 168px);
+  line-height: 0.9;
+}
+/* Display headlines fade from white into gray, like light falling off. */
+.hero h1 .hero-line > span,
+.contact h2,
+.about h2 {
+  background: linear-gradient(180deg, #ffffff 30%, #6f6f78 115%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-line--last > span {
+  background: linear-gradient(180deg, #d4d4d8 0%, #55555d 120%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+.hero-asterisk {
+  color: #8b8b94;
+}
+.hero-identity {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.hero-identity strong {
+  color: var(--ink);
+  font-weight: 550;
+}
+.hero-description {
+  color: #c4c4cc;
+  font-size: clamp(16px, 1.35vw, 20px);
+  letter-spacing: -0.015em;
+}
+.hero-description > span {
+  color: var(--muted);
+}
+
+/* ——— Hero ——— */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -12% 8% auto;
+  height: 82%;
+  background: radial-gradient(
+    50% 50% at 50% 45%,
+    #1d2540 0%,
+    #0c0f1c 45%,
+    transparent 75%
+  );
+  filter: blur(20px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: center;
+  margin-top: 36px;
+}
+
+/* ——— Botões ——— */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition:
+    background-color 200ms,
+    color 200ms,
+    transform 200ms var(--ease-out);
+}
+.button svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 250ms var(--ease-out);
+}
+.button--primary {
+  background: #fafafa;
+  color: #000;
+}
+.button--primary:hover {
+  background: #d4d4d8;
+}
+.button--primary:hover svg {
+  transform: translateX(3px);
+}
+.button--ghost {
+  color: #d4d4d8;
+}
+.button--ghost:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.button:active {
+  transform: scale(0.97);
+}
+.pill-link,
+.circle-link {
+  background: transparent;
+  border-color: var(--line);
+}
+.pill-link:hover,
+.circle-link:hover {
+  background: #fafafa;
+  color: #000;
+  border-color: #fafafa;
+}
+
+/* ——— Header em vidro escuro ——— */
+.header-pill {
+  border-color: #ffffff14;
+  background: #0b0b0dcc;
+  backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 10px 40px #00000080;
+}
+.header-pill[data-open='true'] {
+  box-shadow: 0 30px 90px #000000cc;
+}
+.menu-trigger {
+  background: #fafafa;
+  color: #000;
+}
+.menu-trigger:hover {
+  background: #d4d4d8;
+}
+.pill-menu-link:is(:hover, :focus-visible),
+.pill-menu-link[aria-current='page'] {
+  background: #ffffff0d;
+}
+
+/* ——— Rótulos de seção ——— */
+.lab-header h2,
+.lab-header p {
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.lab-rule {
+  background: linear-gradient(90deg, var(--line), transparent);
+}
+
+/* ——— Produtos: a cor vive só na arte ——— */
+.products-grid {
+  gap: 80px 28px;
+}
+.product-visual {
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px #ffffff0f,
+    0 40px 80px -40px #000;
+  transition: transform 500ms var(--ease-out);
+}
+.product-card:hover .product-visual {
+  transform: translateY(-4px);
+}
+.product-caption h3 {
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+.product-caption p {
+  color: var(--muted);
+}
+
+/* ——— Superfícies das seções ——— */
+.contact,
+.technology,
+[data-theme='dark'] .technology {
+  background: var(--page);
+}
+.capability-detail li {
+  background: var(--soft);
+}
+.contact {
+  border-top: 1px solid var(--line);
+}
+.contact-top {
+  color: var(--muted);
+}
+.contact-link {
+  background: #fafafa;
+  color: #000;
+  border-color: #fafafa;
+}
+.contact-link:hover {
+  background: #d4d4d8;
+  color: #000;
+}
+.contact-link--social {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.contact-link--social:hover {
+  background: #fafafa;
+  color: #000;
+}
+
+/* ——— Rodapé com brilho ——— */
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  border-top: 1px solid var(--line);
+  padding-block: 64px 36px;
+}
+.site-footer::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
+  background: radial-gradient(
+    55% 100% at 50% 110%,
+    #18203d 0%,
+    #0a0d1a 50%,
+    transparent 85%
+  );
+  pointer-events: none;
+}
+.footer-brand p,
+.footer-location p {
+  color: var(--muted);
+}
+
+/* ——— Movimento reduzido ——— */
+@media (prefers-reduced-motion: reduce) {
+  .product-card:hover .product-visual,
+  .button:active {
+    transform: none;
+  }
+}

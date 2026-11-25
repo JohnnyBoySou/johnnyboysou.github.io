@@ -92,7 +92,7 @@ test('movimento reduzido remove shimmer e animações do loading', async ({ page
   try {
     await page.goto('/', { waitUntil: 'domcontentloaded' })
     expect(await page.locator('.boot-name').evaluate(el => getComputedStyle(el, '::after').transitionDuration)).toBe('0s')
-    await expect(page.locator('#boot-loader')).toHaveCSS('background-color', 'rgb(20, 25, 35)')
+    await expect(page.locator('#boot-loader')).toHaveCSS('background-color', 'rgb(0, 0, 0)')
   } finally {
     releaseFonts()
   }
