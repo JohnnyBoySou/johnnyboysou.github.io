@@ -70,7 +70,7 @@ export const capabilities = [
     description:
       'Levo funcionalidades da API à interface: autenticação, permissões, integrações e jornadas de uso. Construo aplicações React e serviços TypeScript para operações comerciais e cuidado conectado, com componentes reutilizáveis e decisões de produto refletidas nos contratos do sistema.',
     tags: ['TypeScript', 'Bun / Elysia', 'React', 'Design systems'],
-    projectIds: ['disk', 'connect', 'shamar'],
+    projectIds: ['disk', 'connect', 'shamar', 'culture'],
   },
   {
     title: 'Observabilidade e operação',

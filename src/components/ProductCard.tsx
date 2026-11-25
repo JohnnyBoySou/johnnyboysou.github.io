@@ -3,6 +3,7 @@ import type { Product } from '../data/products'
 import { ArrowIcon, Asterisk } from './Icons'
 import { AdilaProductArtwork } from './AdilaProductArtwork'
 import './ProductCard.css'
+import './CultureArtwork.css'
 
 export function ProductArtwork({ id }: { id: Product['id'] }) {
   if (id === 'adila-pay' || id === 'adila-webhooks' || id === 'adila-queues' || id === 'adila-orbit') {
@@ -85,6 +86,30 @@ export function ProductArtwork({ id }: { id: Product['id'] }) {
           <span>{tx("WhatsApp")}</span>
           <span>{tx("Equipe")}</span>
           <span>{tx("Histórico")}</span>
+        </span>
+      </span>
+    )
+  if (id === 'culture')
+    return (
+      <span className="culture-art">
+        <span className="culture-org">
+          <span className="culture-node culture-node--root">
+            <i />
+            <span>{tx("Pessoas")}<small>{tx("Estrutura e organograma")}</small></span>
+          </span>
+          <span className="culture-branches">
+            <span className="culture-node"><i /><small>{tx("Equipe")}</small></span>
+            <span className="culture-node"><i /><small>{tx("Comunidade")}</small></span>
+            <span className="culture-node culture-node--candidate">
+              <i /><small>{tx("Candidato")}</small>
+            </span>
+          </span>
+        </span>
+        <span className="art-route culture-route">
+          <span>{tx("Gestão")}</span>
+          <span>{tx("RH")}</span>
+          <span>{tx("Comunidades")}</span>
+          <span>{tx("Recrutamento")}</span>
         </span>
       </span>
     )

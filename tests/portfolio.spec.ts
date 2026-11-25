@@ -46,6 +46,7 @@ test('os cinco produtos abrem suas páginas próprias e permitem voltar', async 
     ['cadence', 'Cadence'],
     ['connect', 'Connect'],
     ['shamar', 'Meu Shamar'],
+    ['culture', 'Culture'],
   ]) {
     await page
       .locator('.products-grid')
@@ -230,13 +231,14 @@ test('produtos têm links públicos e o Shamar distingue os estágios dos modelo
   page,
 }) => {
   await page.goto('/')
-  await expect(page.locator('.product-card')).toHaveCount(9)
+  await expect(page.locator('.product-card')).toHaveCount(10)
   for (const [name, url] of [
     ['Disk', 'https://disk.lai.ia.br'],
     ['MeetCore', 'https://meetcore.lai.ia.br'],
     ['Cadence', 'https://cadence.lai.ia.br'],
     ['Connect', 'https://connect.lai.ia.br'],
     ['Meu Shamar', 'https://meushamar.com.br'],
+    ['Culture', 'https://app.culture.lai.ia.br'],
   ]) {
     await expect(
       page.getByRole('link', { name: `Conhecer ${name}`, exact: true }),
@@ -330,6 +332,7 @@ test('rotas diretas, atualização, histórico e páginas de código aberto', as
     ['cadence', 'Cadence'],
     ['connect', 'Connect'],
     ['shamar', 'Meu Shamar'],
+    ['culture', 'Culture'],
     ['wkix', 'wkix'],
     ['worker-thoth', 'worker-thoth'],
     ['nani', 'nani'],

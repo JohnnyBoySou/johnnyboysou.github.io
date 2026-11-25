@@ -166,4 +166,44 @@ export const productStories: Record<Product['id'], ProductStory> = {
       { title: 'Planejar o próximo ciclo', text: 'Roadmaps conectam as entregas à direção do produto e ajudam a revisar prioridades conforme o trabalho avança.' },
     ],
   },
+  culture: {
+    title: 'Da vaga ao dia a dia da equipe, em um só lugar.',
+    description:
+      'O Culture reúne o que costuma ficar espalhado entre planilhas, formulários e grupos de mensagem. Estrutura, desenvolvimento, comunicação e recrutamento compartilham as mesmas pessoas, permissões e histórico.',
+    steps: [
+      {
+        title: 'Organizar a estrutura',
+        text: 'Cadastro de pessoas, áreas, cargos e organograma, com importação de planilhas, movimentações e papéis personalizados definindo quem vê e faz o quê.',
+      },
+      {
+        title: 'Acompanhar o desenvolvimento',
+        text: 'Ciclos de avaliação e pesquisas, PDI com evidências, feedbacks e reuniões 1:1. Indicadores e painéis podem ser consultados em linguagem natural, sem expor grupos pequenos.',
+      },
+      {
+        title: 'Recrutar e admitir',
+        text: 'Vagas publicadas em páginas de carreira, seleção em etapas, entrevistas e o caminho do candidato aprovado até a admissão, com portal para envio de documentos.',
+      },
+    ],
+    capabilities: {
+      title: 'Gestão, RH, comunidades e recrutamento',
+      items: [
+        {
+          title: 'Gestão',
+          text: 'Pessoas, estrutura e organograma com busca, regras de visibilidade e exportação. Painéis de indicadores com fórmulas e planos de ação; um servidor MCP dá acesso aos dados respeitando as permissões de cada usuário.',
+        },
+        {
+          title: 'RH',
+          text: 'Trilhas de admissão a partir de modelos, avaliações, pesquisas, PDI, feedbacks e 1:1. Comemorações automáticas de aniversários e tempo de casa, valores da empresa e registro de presença.',
+        },
+        {
+          title: 'Comunidades',
+          text: 'Comunidades abertas, com aprovação ou privadas, com participação automática a partir do organograma. Feed com reações, conversas internas e caixa de WhatsApp para falar com quem está fora da plataforma.',
+        },
+        {
+          title: 'Recrutamento',
+          text: 'Banco de talentos com consentimento, extração de currículos em lote e análise com IA que avalia cada requisito citando o currículo. Dados pessoais são removidos antes da análise e o parecer é apenas consultivo.',
+        },
+      ],
+    },
+  },
 }

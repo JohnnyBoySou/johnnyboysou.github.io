@@ -1,5 +1,5 @@
 export type Product = {
-  id: 'disk' | 'meetcore' | 'cadence' | 'connect' | 'shamar' | 'adila-pay' | 'adila-webhooks' | 'adila-queues' | 'adila-orbit'
+  id: 'disk' | 'meetcore' | 'cadence' | 'connect' | 'shamar' | 'adila-pay' | 'adila-webhooks' | 'adila-queues' | 'adila-orbit' | 'culture'
   title: string
   category: string
   description: string
@@ -136,5 +136,23 @@ export const products: Product[] = [
       'Status, prioridades, comentários, dependências e histórico acompanham as tarefas. Projetos e roadmaps conectam planejamento e execução, com visões em Kanban, lista e timeline para acompanhar as entregas.',
     features: ['Tasks e projetos', 'Kanban', 'Roadmaps', 'Dependências'],
     url: 'https://orbit.adila.co',
+  },
+  {
+    id: 'culture',
+    title: 'Culture',
+    category: 'Gestão de pessoas e cultura',
+    description:
+      'Gestão, RH, comunidades e recrutamento em uma só plataforma. Do organograma ao feed da empresa, da vaga publicada à admissão.',
+    detail:
+      'Pessoas, estrutura e organograma com permissões por papel e indicadores que podem ser consultados com IA. Avaliações, pesquisas, PDI e 1:1 acompanham o desenvolvimento; comunidades, feed e conversas aproximam as equipes. No recrutamento, vagas, seleção em etapas e análise de currículos com IA, que cita o currículo e deixa a decisão com as pessoas.',
+    features: [
+      'Gestão de pessoas',
+      'RH e desenvolvimento',
+      'Comunidades',
+      'Recrutamento com IA',
+      'WhatsApp',
+      'MCP',
+    ],
+    url: 'https://app.culture.lai.ia.br',
   },
 ]

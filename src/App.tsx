@@ -84,7 +84,7 @@ function App() {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          <p className="lab-footnote">{tx("Voz, cuidado, pagamentos, integrações e gestão de produto. Explore cada produto e conheça sua página pública.")}</p>
+          <p className="lab-footnote">{tx("Voz, cuidado, pessoas, pagamentos, integrações e gestão de produto. Explore cada produto e conheça sua página pública.")}</p>
           {/* Catálogo Adila temporariamente oculto; componente e dados preservados. */}
           <nav className="section-nav" aria-label={tx("Explorar o portfólio")}>
             <a href="#produto-operacao">{tx("Produto e operação")}<ArrowIcon />

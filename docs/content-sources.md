@@ -32,12 +32,16 @@ João confirmou na conversa que construiu estes produtos e que estão em produç
 | Cadence | [Página pública](https://cadence.lai.ia.br) | Auditoria baseada em roteiros versionados, checkpoints e evidências; revisão humana e histórico de reauditorias. |
 | Connect | [Página pública](https://connect.lai.ia.br) | WhatsApp Business API, múltiplos atendentes, funil, chamadas de voz, transcrição, resumo e segregação por marca. |
 | Meu Shamar | [Famílias](https://meushamar.com.br), [clínicas](https://meushamar.com.br/para-clinicas), [modelos](https://meushamar.com.br/modelos) e confirmação do autor nesta conversa | Rotinas, agenda, check-ins, pedidos de ajuda, dispositivos compatíveis, Alexa, ligações telefônicas, vídeo em tempo real, notificações push, agentes de IA e central de telemonitoramento com registro de condutas pela equipe. |
+| Culture | Repositórios locais do frontend e do backend (README, docs e módulos), lidos em 25/11/2026 a pedido do autor; acesso em [app.culture.lai.ia.br](https://app.culture.lai.ia.br) | Pessoas, estrutura, organograma, permissões e indicadores com IA; admissão, avaliações, pesquisas, PDI, 1:1, comemorações e presença; comunidades, feed, conversas e WhatsApp; vagas, páginas de carreira, seleção, banco de talentos, extração e análise de currículos com IA; servidor MCP. |
 
 Em 1 de outubro de 2026, o autor confirmou explicitamente o uso de ligações telefônicas, vídeo em tempo real, notificações push e agentes de IA no Meu Shamar e solicitou destacá-los nesta página do portfólio. Esses recursos aparecem na apresentação, nas tags e no bloco “Comunicação e IA a serviço do cuidado”. A leitura dos módulos locais de push e gestão de agentes orientou o texto sobre preferências e acesso controlado; não foram executadas chamadas, entregas push ou inferências reais nesta atualização editorial.
 
 O Meu Shamar é apresentado como produto em produção, sem estender esse status a todos os seus modelos. A página de modelos informa: Lume em pesquisa, Dália integrado à plataforma com revisão humana, Lira em avaliação, Sonata em pesquisa inicial e Vita como protótipo funcional. Não foram atribuídos diagnósticos ou decisões clínicas automáticas aos modelos. Recursos de dispositivos dependem de compatibilidade.
 
 As ilustrações dos produtos são composições gráficas próprias, não capturas das interfaces. Tags descrevem capacidades documentadas nas LPs ou confirmadas pelo autor; não inferem a stack interna de cada produto. Não foram copiados preços, métricas comerciais ou promessas de desempenho. A lista inclui MeetCore uma única vez.
+
+
+Em 25/11/2026, o autor pediu a inclusão do Culture, apresentado como sistema de gestão, RH, comunidades e recrutamento. Não há página pública de marketing respondendo (`culture.lai.ia.br` não respondeu); o link aponta para o app, que abre no login. O texto foi escrito a partir do código e da documentação dos repositórios, sem executar a aplicação. Ficaram de fora recursos marcados como em desenvolvimento, planejados ou não validados em produção: offboarding, comunicados, auditoria, cobrança, publicação de vagas no LinkedIn, videoconferência e transcrição de ponta a ponta e reconhecimento facial com câmera real. Nenhum nome de cliente, dado pessoal ou métrica de uso foi incluído.
 
 ## Projetos com código público
 
